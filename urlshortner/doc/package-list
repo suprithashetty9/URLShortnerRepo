@@ -1,0 +1,6 @@
+com.project.urlshortner
+com.project.urlshortner.controller
+com.project.urlshortner.dao
+com.project.urlshortner.model
+com.project.urlshortner.service
+com.project.urlshortner.serviceimpl
