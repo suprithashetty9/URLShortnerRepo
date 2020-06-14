@@ -13,12 +13,12 @@ import com.project.urlshortner.serviceimpl.UrlShortnerServiceImpl;
 class UrlShortnerApplicationTests {
 
 	private MockMvc mockMvc;
-	
+
 	private UrlShortnerServiceImpl impl;
 
 	@MockBean
 	private URLShortnerRepository repository;
-	
+
 //	@Test
 //	public void testToCheckStatistics() throws Exception {
 //		UrlShortner urlShortner = new UrlShortner("http://kodejava.org/how-do-i-persist-entity-to-database-in-jpa/", "d86677b5", Calendar.getInstance(), "12", 0, Calendar.getInstance());

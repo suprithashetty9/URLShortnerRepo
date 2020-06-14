@@ -11,4 +11,4 @@ public interface UrlShortnerService {
 
 	public List<UrlShortner> getAllStatistics(String value);
 
-}
+	}

@@ -30,7 +30,7 @@ public class UrlShortnerServiceImpl implements UrlShortnerService {
 		if (longURL == null || longURL.isEmpty()) {
 			logger.error("Empty or null long URL " + longURL);
 			throw new NullPointerException();
-		}
+		}	
 		UrlShortner theUrlShortner = new UrlShortner();
 		String urlType = Hashing.murmur3_32().hashString(longURL, StandardCharsets.UTF_8).toString();
 		theUrlShortner.setShortUrl(urlType);
