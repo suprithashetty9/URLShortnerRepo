@@ -1,21 +1,21 @@
-version: '3'
-
+version: "3"
 services:
-  docker-mysql:
-    image: mysql:5.7
+  url-shortner-1.0.0:
+    image: url-shortner-1.0.0 
+    ports:
+      - "8084:8084"
+    networks:
+      - web-api-mysql-network
+    depends_on:
+      - mysqldb1
+ 
+  mysqldb1:
+    image: mysql:8
+    networks:
+      - web-api-mysql-network
     environment:
       - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=url_details
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
-    ports:
-      - 3307:3306
+      - MYSQL_DATABASE=url_directory  
 
-  app:
-    image: app:latest
-    ports:
-       - 8084:8084
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-stand:3306/url_directory?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC
-    depends_on:
-       - docker-mysql
+networks:
+  web-api-mysql-network: 

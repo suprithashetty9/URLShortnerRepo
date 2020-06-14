@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.project.urlshortner.dto.ShortUrlDTO;
 import com.project.urlshortner.model.UrlShortner;
 import com.project.urlshortner.service.UrlShortnerService;
@@ -50,7 +51,7 @@ public class ApiRestController {
 		String ipAddress = request.getRemoteAddr();
 		if (urlValidator.isValid(longURL)) {
 			String shortUrl = urlShortnerService.getUrlShortened(longURL, ipAddress);
-			return new ResponseEntity<>(shortUrl, HttpStatus.OK);
+			return new ResponseEntity<>("http://localhost:8084/assessment/urlShortner/"+shortUrl, HttpStatus.OK);
 		} else {
 			logger.error("Inside method getURlShorted Error" + longURL);
 			return new ResponseEntity<>("Invalid URL", HttpStatus.BAD_REQUEST);
@@ -82,4 +83,4 @@ public class ApiRestController {
 
 	}
 
-}	
+}
