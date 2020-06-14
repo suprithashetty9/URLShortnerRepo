@@ -41,7 +41,7 @@ public class ApiRestController {
 	 * @return The HttpStatus and short version of long URL.
 	 */
 	@PostMapping(value = "/urlShortner")
-	@ApiOperation(value = "Generates a Short URL", notes = "")
+	@ApiOperation(value = "Generates a Short URL", notes = "An Api for URL shortner and to redirect to original URL")
 	public ResponseEntity<String> getUrlShortened(
 			@RequestBody @ApiParam(required = true, name = "LongURL", value = "A Long URL that need to be shortened ") ShortUrlDTO shortUrlDTO,
 			HttpServletRequest request, BindingResult bindingResult) {
@@ -60,14 +60,13 @@ public class ApiRestController {
 	/**
 	 * Implements forwarding of the short URLs to the original one.
 	 * 
-	 * @param shortenedUrl The short URL value which helps directing to original
-	 *                     URL.
+	 * @param shortenedUrl The short URL value which helps directing to original URL.
 	 * @return The original URL.
 	 * @throws Exception checks for null or empty short URL string passed.
 	 */
 	@GetMapping("urlShortner/{shortURLValue}")
 	public String getOriginalUrl(@PathVariable String shortURLValue) throws Exception {
-		List<UrlShortner> longURL = urlShortnerService.findByshortenedUrl(shortURLValue);
+		List<UrlShortner> longURL = urlShortnerService.findByShortenedUrl(shortURLValue);
 		logger.info("longURL" + longURL);
 		return longURL.get(0).getOrginalUrl();
 	}

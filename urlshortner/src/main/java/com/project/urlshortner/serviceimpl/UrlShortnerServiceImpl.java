@@ -4,15 +4,12 @@ import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
-
 import javax.persistence.EntityNotFoundException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.google.common.hash.Hashing;
-import com.project.urlshortner.controller.ApiRestController;
 import com.project.urlshortner.dao.URLShortnerRepository;
 import com.project.urlshortner.model.UrlShortner;
 import com.project.urlshortner.service.UrlShortnerService;
@@ -47,7 +44,7 @@ public class UrlShortnerServiceImpl implements UrlShortnerService {
 	}
 
 	@Override
-	public List<UrlShortner> findByshortenedUrl(String shortURLValue) throws Exception {
+	public List<UrlShortner> findByShortenedUrl(String shortURLValue) throws Exception {
 		if (shortURLValue == null || shortURLValue.isEmpty()) {
 			logger.error("Empty or null long URL " + shortURLValue);
 			throw new EntityNotFoundException("Value is null");
